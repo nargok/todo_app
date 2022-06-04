@@ -1,18 +1,6 @@
 version: "3.7"
 
 services:
-  api:
-    build:
-      context: ./backend/
-      dockerfile: ./Dockerfile
-    command: uvicorn main:app --reload --host 0.0.0.0 --port 8000
-    volumes:
-      - ./backend:/server
-    ports:
-      - 8000:8000
-    depends_on:
-      - db
-      
   db:
     platform: linux/amd64
     build:
@@ -24,3 +12,25 @@ services:
       - 3306:3306
     volumes:
       - ./db/conf.d:/etc/mysql/conf.d
+
+  api:
+    build:
+      context: ./backend/
+      dockerfile: ./Dockerfile
+    command: uvicorn main:app --reload --host 0.0.0.0 --port 8000
+    volumes:
+      - ./backend:/server
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend/
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./frontend:/app
+    command: sh -c "cd todo && npm run dev"
+    ports:
+      - "3000:3000"
