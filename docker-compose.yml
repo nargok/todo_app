@@ -10,3 +10,17 @@ services:
       - ./backend:/server
     ports:
       - 8000:8000
+    depends_on:
+      - db
+      
+  db:
+    platform: linux/amd64
+    build:
+      context: ./db/
+      dockerfile: ./Dockerfile
+    env_file:
+      - ./db/.env
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db/conf.d:/etc/mysql/conf.d
