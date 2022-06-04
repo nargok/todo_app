@@ -3,7 +3,7 @@ from typing import List
 from fastapi import Depends, APIRouter, HTTPException
 from sqlalchemy.orm import Session
 
-from todo import cruds
+import todo.cruds.todo as cruds
 from core.db.database import get_db
 from todo.schemas.todo import Todo, TodoCreate, TodoUpdate
 

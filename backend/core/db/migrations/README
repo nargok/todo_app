@@ -1,0 +1,13 @@
+Generic single-database configuration.
+
+## How to create migration file
+
+```shell
+pipenv run alembic revision --autogenerate -m 'comment'
+```
+
+## How to migrate
+
+```shell
+pipenv run alembic upgrade head
+```

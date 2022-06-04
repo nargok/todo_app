@@ -1,7 +1,7 @@
-from sqlalchemy import Session
+from sqlalchemy.orm import Session
 
-from todo.models import Todo
-from todo.schemas import TodoCreate, TodoUpdate
+from todo.models.todo import Todo
+from todo.schemas.todo import TodoCreate, TodoUpdate
 
 
 def get_todo(db: Session, todo_id: int):

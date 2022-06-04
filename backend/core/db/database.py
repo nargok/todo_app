@@ -8,7 +8,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, scoped_session
 
 load_dotenv(verbose=True)
-dotenv_path = join(dirname(__file__), '.env')
+dotenv_path = join(dirname(__file__), '../../.env')
 load_dotenv(dotenv_path)
 
 user_name = os.environ.get('DB_USER_NAME')
@@ -16,7 +16,7 @@ password = os.environ.get('DB_PASSWORD')
 host = os.environ.get('DB_HOST')
 database_name = os.environ.get('DB_NAME')
 
-DATABASE = f'mysql+mysqlconnector://{user_name}:{password}@{host}{database_name}?charset=utf8mb4'
+DATABASE = f'mysql+mysqlconnector://root:{password}@{host}/{database_name}?charset=utf8'
 
 ENGINE = create_engine(
     DATABASE,
@@ -33,6 +33,8 @@ Base.query = session.query_property()
 
 
 def get_db():
+    print('======= db info ====')
+    print(DATABASE)
     db = session()
     try:
         yield db
