@@ -31,6 +31,6 @@ services:
       dockerfile: ./Dockerfile
     volumes:
       - ./frontend:/app
-    command: sh -c "cd todo && npm run dev"
+    command: sh -c "cd todo && npm run start"
     ports:
       - "3000:3000"
