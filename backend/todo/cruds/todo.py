@@ -1,18 +1,19 @@
+from typing import List
 from sqlalchemy.orm import Session
 
 from todo.models.todo import Todo
 from todo.schemas.todo import TodoCreate, TodoUpdate
 
 
-def get_todo(db: Session, todo_id: int):
+def get_todo(db: Session, todo_id: int) -> Todo:
     return db.query(Todo).filter(Todo.id == todo_id).first()
 
 
-def get_todos(db: Session, limit: int = 100):
+def get_todos(db: Session, limit: int = 100) -> List[Todo]:
     return db.query(Todo).limit(limit).all()
 
 
-def create_todo(db: Session, todo: TodoCreate):
+def create_todo(db: Session, todo: TodoCreate) -> Todo:
     db_todo = Todo(title=todo.title, text=todo.text)
     db.add(db_todo)
     db.commit()
@@ -20,7 +21,7 @@ def create_todo(db: Session, todo: TodoCreate):
     return db_todo
 
 
-def update_todo(db: Session, todo_id: int, todo: TodoUpdate):
+def update_todo(db: Session, todo_id: int, todo: TodoUpdate) -> Todo:
     db_todo = db.query(Todo).filter(Todo.id == todo_id).first()
     db_todo.title = todo.title
     db_todo.text = todo.text

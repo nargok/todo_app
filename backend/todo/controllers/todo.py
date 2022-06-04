@@ -14,7 +14,7 @@ router = APIRouter()
 def read_todo(todo_id: int, db: Session = Depends(get_db)):
     db_todo = cruds.get_todo(db=db, todo_id=todo_id)
     if not db_todo:
-        raise HTTPException(status=404, detail="Todo not found")
+        raise HTTPException(status_code=404, detail="Todo not found")
     return db_todo
 
 
