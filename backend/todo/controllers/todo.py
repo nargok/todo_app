@@ -18,12 +18,12 @@ def read_todo(todo_id: int, db: Session = Depends(get_db)):
     return db_todo
 
 
-@router.get("/", response_model=List[Todo])
+@router.get("", response_model=List[Todo])
 def read_todos(limit: int = 100, db: Session = Depends(get_db)):
     return cruds.get_todos(db=db, limit=limit)
 
 
-@router.post("/", response_model=Todo)
+@router.post("", response_model=Todo)
 def create_todo(todo: TodoCreate, db: Session = Depends(get_db)):
     return cruds.create_todo(db=db, todo=todo)
 
