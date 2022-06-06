@@ -1,6 +1,7 @@
 from fastapi import FastAPI, APIRouter
 
-from todo.controllers.todo import router as todo_router
+# from todo.controllers.todo import router as todo_router
+from todo.routers.todo import router as todo_router
 
 router = APIRouter()
 router.include_router(
