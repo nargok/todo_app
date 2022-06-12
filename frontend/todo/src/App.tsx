@@ -2,15 +2,16 @@ import React from "react";
 import logo from "./logo.svg";
 import { Button } from "antd";
 import { Typography } from "antd";
+import { Layout } from "antd";
 
 import TaskForm from "./components/TaskForm";
 
 import "./App.css";
-import { Layout } from "antd";
+import SideMenu from "./components/SideMenu";
 
 const { Header, Footer, Sider, Content } = Layout;
 
-const { Title } = Typography;
+// const { Title } = Typography;
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
       <Layout className="top">
         {/* <Header>Header</Header> */}
         <Layout>
-          <Sider>Sider</Sider>
+          <Sider>
+            <SideMenu />
+          </Sider>
           <Content>Content</Content>
           <TaskForm></TaskForm>
         </Layout>
