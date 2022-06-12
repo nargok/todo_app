@@ -8,6 +8,7 @@ import TaskForm from "./components/TaskForm";
 
 import "./App.css";
 import SideMenu from "./components/SideMenu";
+import TaskListIndex from "./components/task_list";
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -22,7 +23,9 @@ function App() {
           <Sider>
             <SideMenu />
           </Sider>
-          <Content>Content</Content>
+          <Content>
+            <TaskListIndex />
+          </Content>
           <TaskForm></TaskForm>
         </Layout>
         {/* <Footer>Footer</Footer> */}
